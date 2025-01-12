@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'package:test_1/controller/home_screen_controller/home_screen_controller.dart';
+import 'package:test_1/core/constant/responsive.dart';
+import 'package:test_1/views/widget/home_widget/custom_bottom_navbar_tablet_widget.dart';
 import 'package:test_1/views/widget/home_widget/custom_bottom_navbar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,7 +19,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             SizedBox(height: 6.h),
             SizedBox(
-              height: 5.h,
+              height: 6.h,
               width: Get.width,
               child: Stack(
                 children: [
@@ -48,9 +50,11 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     controller.screen[controller.currentIndex],
                     Align(
-                      alignment: Alignment.bottomCenter,
-                      child: const CustomBottomNavBarWidget(),
-                    ),
+                        alignment: Alignment.bottomCenter,
+                        child: Responsive(
+                          mobile: const CustomBottomNavBarWidget(),
+                          tablet: const CustomBottomNavBarTabletWidget(),
+                        )),
                   ],
                 ),
               ),

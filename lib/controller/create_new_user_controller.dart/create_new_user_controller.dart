@@ -27,6 +27,7 @@ class CreateNewUserControllerIMP extends CreateNewUserController {
   final ImagePicker _picker = ImagePicker();
   String? chosenValue;
   Crud curd = Crud();
+  String? imagePath;
   List<String> choice = [
     'owner',
     'admin',
@@ -73,6 +74,8 @@ class CreateNewUserControllerIMP extends CreateNewUserController {
     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       image = File(pickedFile.path);
+
+      Get.back();
     } else {
       if (kDebugMode) {
         print('No image selected.');
@@ -86,6 +89,7 @@ class CreateNewUserControllerIMP extends CreateNewUserController {
     final pickedFile = await _picker.pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
       image = File(pickedFile.path);
+      Get.back();
     } else {
       if (kDebugMode) {
         print('No image captured.');
@@ -143,8 +147,8 @@ class CreateNewUserControllerIMP extends CreateNewUserController {
         'email': emailController.text,
         'phone': phoneController.text,
         'role': chosenValue,
-        'profile_image': image.toString(),
-        'intro_video': videoFile.toString(),
+        'profile_image': image,
+        'intro_video': videoFile,
       },
     );
     if (response != null) {

@@ -20,9 +20,9 @@ class CreateNewUserScreen extends StatelessWidget {
             UploadImageWidget(
               onCameraTap: controller.onCamraTap,
               onBackTep: controller.onBackTap,
-              backgroundImage: Image.asset(
-                AppPhotoLink.empity_image,
-              ),
+              backgroundImage: controller.image == null
+                  ? Image.asset(AppPhotoLink.empity_image)
+                  : Image.file(controller.image!, fit: BoxFit.fill),
             ),
             CreatNewUserBody(),
           ],
